@@ -46,11 +46,13 @@ public class AppiumTests {
     @Test
     public void inputEmptyLineTest() {
 
+        String emptyLine = "     "; // пять пробелов, которые далее будут введены в поле
         mainActivityPage.text2changeBtn.isDisplayed();
         String defaultText = mainActivityPage.text2changeBtn.getText(); // сохраняем отображаемый до всех манипуляций текст
 
         mainActivityPage.inputField.isDisplayed();
-        mainActivityPage.inputField.click(); // здесь ничего не нужно вводить, поэтому просто тыкаем в поле (на всякий случай)
+        mainActivityPage.inputField.click();
+        mainActivityPage.inputField.sendKeys(emptyLine); // вводим строку из пробелов
 
         mainActivityPage.changeDisplTextBtn.isDisplayed();
         mainActivityPage.changeDisplTextBtn.click();
