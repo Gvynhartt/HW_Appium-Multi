@@ -44,15 +44,33 @@ public class AppiumTests {
     }
 
     @Test
-    public void inputEmptyLineTest() {
+    public void inputLineOfSpacesTest() {
 
-        String emptyLine = "     "; // пять пробелов, которые далее будут введены в поле
+        String spaceLine = "     "; // пять пробелов, которые далее будут введены в поле
         mainActivityPage.text2changeBtn.isDisplayed();
         String defaultText = mainActivityPage.text2changeBtn.getText(); // сохраняем отображаемый до всех манипуляций текст
 
         mainActivityPage.inputField.isDisplayed();
         mainActivityPage.inputField.click();
-        mainActivityPage.inputField.sendKeys(emptyLine); // вводим строку из пробелов
+        mainActivityPage.inputField.sendKeys(spaceLine); // вводим строку из пробелов
+
+        mainActivityPage.changeDisplTextBtn.isDisplayed();
+        mainActivityPage.changeDisplTextBtn.click();
+
+        String resultText = mainActivityPage.text2changeBtn.getText(); // сохраняем отображаемый тест для сличения
+        Assertions.assertEquals(defaultText, resultText);
+    }
+
+    @Test
+    public void inputEmptyStringLineTest() {
+
+        String emptyLine = ""; // для верности тестируем также ввод пустой строки
+        mainActivityPage.text2changeBtn.isDisplayed();
+        String defaultText = mainActivityPage.text2changeBtn.getText(); // сохраняем отображаемый до всех манипуляций текст
+
+        mainActivityPage.inputField.isDisplayed();
+        mainActivityPage.inputField.click();
+        mainActivityPage.inputField.sendKeys(emptyLine); // теперь вводим пустую строку
 
         mainActivityPage.changeDisplTextBtn.isDisplayed();
         mainActivityPage.changeDisplTextBtn.click();
